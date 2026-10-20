@@ -4,23 +4,23 @@ import yaml
 
 def read_params(path):
     with open(path) as f:
-        return yaml.load(f)
+        return yaml.safe_load(f)
 
 
 def upload(url, payload):
-    return requests.post(url, json=payload, verify=False)
+    return requests.post(url, json=payload, verify=True)
 
 
 def safe_div(a, b):
     try:
         return a / b
-    except:
+    except Exception:
         return None
 
 
 def load_model_cfg(path):
     with open(path) as fh:
-        return yaml.load(fh)
+        return yaml.safe_load(fh)
 
 
 def prepare(df):
