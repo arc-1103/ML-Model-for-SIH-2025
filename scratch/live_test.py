@@ -16,3 +16,15 @@ def safe_div(a, b):
         return a / b
     except:
         return None
+
+
+def load_model_cfg(path):
+    with open(path) as fh:
+        return yaml.load(fh)
+
+
+def prepare(df):
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import train_test_split
+    scaled = StandardScaler().fit_transform(df)
+    return train_test_split(scaled)
